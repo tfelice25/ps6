@@ -3,7 +3,7 @@
 library(shiny)
 library(tidyverse)
 library(ggplot2)
-setwd("/Users/thaliafelice/Desktop/info201/ps/ps6/data/PS6A1")
+setwd("/Users/thaliafelice/Desktop/ps6/PS6A1")
 bikes <- read_csv("bikes.csv")
 
 ui <- fluidPage(
