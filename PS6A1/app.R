@@ -21,26 +21,28 @@ ui <- fluidPage(
                  radioButtons("color", "Choose Graphing Color", 
                               choices = c("maroon", "brown",
                                           "blue", "orange"))),
+        
+        ),
                                           
           
-        ),
+        h3("Key"),
+        p(strong(1), "- January"),
+        p(strong(2), "- February"),
+        p(strong(3), "- March"),
+        p(strong(4), "- April"),
+        p(strong(5), "- May"),
+        p(strong(6), "- June"),
+        p(strong(7), "- July"),
+        p(strong(8), "- August"),
+        p(strong(9), "- September"),
+        p(strong(10), "- October"), 
+        p(strong(11), "- November"),
+        p(strong(12), "- December"),    
         
-        
-          h3("Key"),
-          p(strong(1), "- January"),
-          p(strong(2), "- February"),
-          p(strong(3), "- March"),
-          p(strong(4), "- April"),
-          p(strong(5), "- May"),
-          p(strong(6), "- June"),
-          p(strong(7), "- July"),
-          p(strong(8), "- August"),
-          p(strong(9), "- September"),
-          p(strong(10), "- October"), 
-          p(strong(11), "- November"),
-          p(strong(12), "- December"),
+                                  
           
-        ),
+      ),
+    
     mainPanel(
       tabsetPanel(type = "tabs",
         tabPanel("Summary",mainPanel(
@@ -56,24 +58,24 @@ ui <- fluidPage(
             of the data points to suggest that there was a strong relationship between the two. One interesting characteristic I did see in the graphs was that the range of bike rentals between months
             increased from month 1 until month 7. After month 7, the range began to decrease each month."),
           h2("Conclusion"),
-          p("Though I hypothesized a positive relationship between solar radiation and bike rentals, the data disproves this hypothesis. There is no correlation between the variables."),
+          p("Though I hypothesized a positive relationship between solar radiation and bike rentals, the data disproves this hypothesis. There is no correlation between the variables.")
           )),
           
         tabPanel("Plot", mainPanel(
           plotOutput("plot"),
-          textOutput("plotObservations"),
+          textOutput("plotObservations")
          )),
         
           tabPanel("Table", mainPanel(
             tableOutput("table"),
             textOutput("median_bikes"),
-            textOutput("median_solar"),
+            textOutput("median_solar")
                       ))
                              
               )        
             )      
         )
-      )
+)  
  
 server <- function(input, output) {
   
@@ -93,8 +95,9 @@ server <- function(input, output) {
     table <- bikes %>% 
       filter(!is.na(solar_radiation), !is.na(num_bikes_rented), month %in% input$month) %>% 
       group_by(month) %>% 
-      summarize(median_bikes = median(num_bikes_rented), median_solar = median(solar_radiation), min_bikes = min(num_bikes_rented), max_bikes = max(num_bikes_rented), min_solar = min(solar_radiation), max_solar = max(solar_radiation))
-      })
+      summarize(median_bikes = median(num_bikes_rented), median_solar = median(solar_radiation), min_bikes = min(num_bikes_rented), max_bikes = max(num_bikes_rented), min_solar = min(solar_radiation), max_solar = max(solar_radiation)) 
+    })
+  
   output$plotObservations <- renderText({
     x <- bikes %>% 
       filter(month %in% input$month) %>% 
@@ -121,6 +124,8 @@ server <- function(input, output) {
     paste("In month", input$month, "the median amount of solar radiation was", a, "MJ/m2")
     
   })
+  
+  output$value <- renderPrint({ input$checkbox })
 
 }  
 
