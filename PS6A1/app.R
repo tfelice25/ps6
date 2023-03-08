@@ -54,7 +54,7 @@ ui <- fluidPage(
         tabPanel("Summary",mainPanel(
           h1("How Does Solar Radiation Affect Bike Rentals on a Given Day?"),
           h2("Overview"),
-          p("My dataset comes from UCI Machine Learning Repository and it is what I will be using for the final group project. The data is from Seoul, south Korea
+          p("My dataset comes from UCI Machine Learning Repository and it is what I will be using for the final group project. The data is from Seoul, South Korea
           and was collected from January 2017 to November 2018. Specifically, 
           I'm interested in what affect solar radiation (or in other words the presenceo of the sun or a 'nice day') may increase or decrease
           bike rentals. Before I started analyzing the data, my hypothesis was that higher amounts of solar radiation would lead to higher numbers of bike rentals, 

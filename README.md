@@ -26,3 +26,6 @@ Because I am referencing months by numeric values, and while I hoped this would 
 # Link to Shiny App 
 
 [Here is the link to my working shiny app](https://tfelice25.shinyapps.io/PS6A1/)
+
+
+This problem set took me about 15 hours 
